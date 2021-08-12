@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import image_404 from '../404_Error.jpg'; 
+import React, { Component } from 'react'
 
 export default class SearchGallery extends Component {
     render() {
         return (
             <div>
-              <img src={image_404} alt="image_404" />
+                <h1>nothing to see here</h1>
             </div>
         )
     }
 }
-

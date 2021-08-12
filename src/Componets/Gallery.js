@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Photo from './Photo';
-import NotFound from './NotFound';
+import NoResult from './NoResult';
 import Loading from './Loading';
 
 class Gallery extends Component {
 
-    componentDidUpdate(){
-       this.props.getData(this.props.title);
-    }
+  
     
     render() {
-      console.log(this.props.loading);
       let display;
       if(this.props.loading === true){
           display =<Loading />
@@ -19,12 +16,15 @@ class Gallery extends Component {
         display = this.props.data.map((photo)=>{
             return (<Photo id={photo.id} src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`} key={photo.id} alt={photo.title} />)})
       } else {
-          display = <NotFound />
+          display = <NoResult />
       }
         return (
-           <div>
+           <div className="displayArea">
                <h1>{this.props.title} Photos</h1>
+               <div className="gallery">
                {display}
+               </div>
+              
            </div>
         )
     }
