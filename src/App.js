@@ -21,17 +21,18 @@ class App extends Component {
 
   componentDidMount() {
     this.performSearch("Canyon");
-    console.log(this.props.location.pathname);
   }
 
+  //loads new data when componets updates
   componentDidUpdate(prevProps) {
+    console.log(this.props.match.params);
     if (this.props.location.pathname !== prevProps.location.pathname) {
       const newSearch = this.props.location.pathname.split("/")[2];
       this.performSearch(newSearch);
-      // this.props.history.pushState("/search/newSearch");
     }
   }
 
+  // gets data from flickr API
   performSearch = (query) => {
     this.setState({
       loading: true,
@@ -112,6 +113,7 @@ class App extends Component {
                 />
               )}
             />
+            {/* not found route */}
             <Route component={NotFound} />
           </Switch>
         </>

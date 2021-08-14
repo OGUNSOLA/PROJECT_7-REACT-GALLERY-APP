@@ -10,7 +10,7 @@ class Gallery extends Component {
   render() {
     let display;
     if (this.props.loading === true) {
-      display = <Loading />;
+      display = <Loading />; // displays loading indicator while loading images
     } else if (this.props.data.length > 0) {
       display = this.props.data.map((photo) => {
         return (
@@ -23,7 +23,7 @@ class Gallery extends Component {
         );
       });
     } else {
-      display = <NoResult />;
+      display = <NoResult />; // renders no result page
     }
     return (
       <div className="displayArea">

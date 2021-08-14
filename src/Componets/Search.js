@@ -8,17 +8,21 @@ class Search extends Component {
     searchText: "",
   };
 
+  // sets the searct text dynamically as its being ttyoed
   handleSearch = (e) => {
     this.setState({
       searchText: e.target.value,
     });
   };
+
+  // pushes history parameter and gets images data
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.handleSearch(this.state.searchText);
     this.props.history.push(`/search/${this.state.searchText}`);
     e.currentTarget.reset();
   };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="searchForm">
