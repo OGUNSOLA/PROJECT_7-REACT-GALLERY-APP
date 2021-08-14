@@ -12,7 +12,7 @@ function Nav() {
         <li className="navItem">MACAW</li>
       </NavLink>
       <NavLink to="/bison">
-        <li>BISON</li>
+        <li className="navItem">BISON</li>
       </NavLink>
     </div>
   );

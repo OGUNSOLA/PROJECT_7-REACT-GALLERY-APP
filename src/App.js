@@ -1,68 +1,123 @@
+/** @format */
+
 import React, { Component } from "react";
-import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import {apiKey } from './Key';
-import axios from 'axios';
-import Gallery from './Componets/Gallery'
-import Nav from './Componets/Nav';
-import Search from './Componets/Search';
-import { koalaPhotos , pandaPhotos, pumaPhotos} from "./Componets/NavData";
+import "./App.css";
+import { Route, Switch } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { apiKey } from "./Key";
+import axios from "axios";
+import Gallery from "./Componets/Gallery";
+import Nav from "./Componets/Nav";
+import Search from "./Componets/Search";
+import { koalaPhotos, pandaPhotos, pumaPhotos } from "./Componets/NavData";
 import NotFound from "./Componets/NotFound";
 
+class App extends Component {
+  state = {
+    photosData: [],
+    loading: true,
+    title: "canyon",
+  };
 
-export default class App extends Component {
-
-
-  state ={
-    photosData :[],
-    loading:true,
-    title :''
-
+  componentDidMount() {
+    this.performSearch("Canyon");
+    console.log(this.props.location.pathname);
   }
 
- 
-
-  componentDidMount(){
-    this.performSearch('Canyon');
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      const newSearch = this.props.location.pathname.split("/")[2];
+      this.performSearch(newSearch);
+      // this.props.history.pushState("/search/newSearch");
+    }
   }
 
-  performSearch =(query) =>{
-  this.setState({
-    loading:true,
-  })
-
-    axios.get(
-      `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&is_getty=true&safe_search=3&per_page=24&page=1&format=json&nojsoncallback=12`
-    ).then((res) => {
-      this.setState({
-        photosData :res.data.photos.photo,
-      loading:false,
-      title :query
-      })
-    }).catch(error => {
-      console.log(error);
+  performSearch = (query) => {
+    this.setState({
+      loading: true,
     });
-  }
+
+    axios
+      .get(
+        `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&is_getty=true&safe_search=1&per_page=24&page=2&format=json&nojsoncallback=12`
+      )
+      .then((res) => {
+        this.setState({
+          photosData: res.data.photos.photo,
+          loading: false,
+          title: query,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   render() {
     return (
-     
-      <BrowserRouter>
-       <Search handleSearch={this.performSearch}/>
- <>
- <Nav />
-        <Switch>
-        <Route exact path='/' render={() => <Gallery title={this.state.title} data={this.state.photosData} getData={this.performSearch}  loading={this.state.loading}  />} />
-        <Route  path='/waterfall' render={() => <Gallery title='WATERFALLS'  data={koalaPhotos} getData={this.performSearch} loading={this.state.loading} />} />
-        <Route  path='/macaw' render={() => <Gallery title='MACAW'  data={pandaPhotos} getData={this.performSearch} loading={this.state.loading}  />}  />
-        <Route  path='/bison' render={() => <Gallery title='BISON'  data={pumaPhotos} getData={this.performSearch}  loading={this.state.loading} />}  />
-        <Route  path='/search/:topic' render={({match}) => <Gallery title={match.params.topic}  data={this.state.photosData} getData={this.performSearch} loading={this.state.loading} />} />
-        <Route component={NotFound}/>
-        </Switch>
+      <>
+        <Search handleSearch={this.performSearch} />
+        <>
+          <Nav />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Gallery
+                  title={this.state.title}
+                  data={this.state.photosData}
+                  loading={this.state.loading}
+                />
+              )}
+            />
+            <Route
+              path="/waterfall"
+              render={() => (
+                <Gallery
+                  title="WATERFALLS"
+                  data={koalaPhotos}
+                  loading={this.state.loading}
+                />
+              )}
+            />
+            <Route
+              path="/macaw"
+              render={() => (
+                <Gallery
+                  title="MACAW"
+                  data={pandaPhotos}
+                  loading={this.state.loading}
+                />
+              )}
+            />
+            <Route
+              path="/bison"
+              render={() => (
+                <Gallery
+                  title="BISON"
+                  data={pumaPhotos}
+                  loading={this.state.loading}
+                />
+              )}
+            />
+            <Route
+              path="/search/:topic"
+              render={({ match }) => (
+                <Gallery
+                  query={match.params.topic}
+                  title={this.state.title}
+                  data={this.state.photosData}
+                  loading={this.state.loading}
+                />
+              )}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </>
       </>
-      </BrowserRouter>
-    )
-    
-     
+    );
   }
 }
+
+export default withRouter(App);
