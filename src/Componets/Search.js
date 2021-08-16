@@ -17,10 +17,12 @@ class Search extends Component {
 
   // pushes history parameter and gets images data
   handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.handleSearch(this.state.searchText);
-    this.props.history.push(`/search/${this.state.searchText}`);
-    e.currentTarget.reset();
+    if (this.state.searchText.length > 0) {
+      e.preventDefault();
+      this.props.handleSearch(this.state.searchText);
+      this.props.history.push(`/search/${this.state.searchText}`);
+      e.currentTarget.reset();
+    }
   };
 
   render() {
@@ -30,6 +32,7 @@ class Search extends Component {
           type="text"
           onChange={this.handleSearch}
           placeholder="TYPE IN YOUR SEARCH"
+          required
         />
         <button type="submit" className="search-button">
           {/* <link to={{ pathname: `/search/${this.state.searchText}` }}></link> */}
