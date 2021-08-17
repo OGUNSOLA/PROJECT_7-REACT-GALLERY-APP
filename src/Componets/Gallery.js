@@ -27,7 +27,7 @@ class Gallery extends Component {
     }
     return (
       <div className="displayArea">
-        <h1>{this.props.title.toUpperCase()} PHOTOS</h1>
+        <h1>{this.props.title} PHOTOS</h1>
         <ul className="gallery">{display}</ul>
       </div>
     );

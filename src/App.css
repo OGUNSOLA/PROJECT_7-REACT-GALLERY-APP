@@ -69,6 +69,10 @@ input:focus {
   color: darkslategrey;
 }
 
+.displayArea > h1 {
+  text-transform: uppercase;
+}
+
 .gallery {
   display: flex;
   flex-direction: row;
