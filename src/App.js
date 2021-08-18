@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { apiKey } from "./Key";
 import axios from "axios";
@@ -61,7 +61,7 @@ class App extends Component {
         <>
           <Nav />
           <Switch>
-            <Route
+            {/* <Route
               exact
               path="/"
               render={() => (
@@ -71,7 +71,11 @@ class App extends Component {
                   loading={this.state.loading}
                 />
               )}
-            />
+            /> */}
+
+            <Route exact path="/">
+              <Redirect to="/waterfall" />
+            </Route>
             <Route
               path="/waterfall"
               render={() => (
