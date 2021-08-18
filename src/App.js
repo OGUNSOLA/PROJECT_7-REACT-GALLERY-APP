@@ -61,18 +61,6 @@ class App extends Component {
         <>
           <Nav />
           <Switch>
-            {/* <Route
-              exact
-              path="/"
-              render={() => (
-                <Gallery
-                  title={this.state.title}
-                  data={this.state.photosData}
-                  loading={this.state.loading}
-                />
-              )}
-            /> */}
-
             <Route exact path="/">
               <Redirect to="/waterfall" />
             </Route>
