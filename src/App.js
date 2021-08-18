@@ -16,11 +16,11 @@ class App extends Component {
   state = {
     photosData: [],
     loading: true,
-    title: "canyon",
+    title: "",
   };
 
   componentDidMount() {
-    this.performSearch("Canyon");
+    this.performSearch("waterfall");
   }
 
   //loads new data when componets updates
