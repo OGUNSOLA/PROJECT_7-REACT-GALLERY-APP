@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/PROJECT_7-REACT-GALLERY-APP/static/css/main.e53c733d.chunk.css",
+    "main.js": "/PROJECT_7-REACT-GALLERY-APP/static/js/main.fc03b13c.chunk.js",
+    "main.js.map": "/PROJECT_7-REACT-GALLERY-APP/static/js/main.fc03b13c.chunk.js.map",
+    "runtime-main.js": "/PROJECT_7-REACT-GALLERY-APP/static/js/runtime-main.50edd7ba.js",
+    "runtime-main.js.map": "/PROJECT_7-REACT-GALLERY-APP/static/js/runtime-main.50edd7ba.js.map",
+    "static/js/2.fd6f6c4b.chunk.js": "/PROJECT_7-REACT-GALLERY-APP/static/js/2.fd6f6c4b.chunk.js",
+    "static/js/2.fd6f6c4b.chunk.js.map": "/PROJECT_7-REACT-GALLERY-APP/static/js/2.fd6f6c4b.chunk.js.map",
+    "static/js/3.23acb149.chunk.js": "/PROJECT_7-REACT-GALLERY-APP/static/js/3.23acb149.chunk.js",
+    "static/js/3.23acb149.chunk.js.map": "/PROJECT_7-REACT-GALLERY-APP/static/js/3.23acb149.chunk.js.map",
+    "index.html": "/PROJECT_7-REACT-GALLERY-APP/index.html",
+    "static/css/main.e53c733d.chunk.css.map": "/PROJECT_7-REACT-GALLERY-APP/static/css/main.e53c733d.chunk.css.map",
+    "static/js/2.fd6f6c4b.chunk.js.LICENSE.txt": "/PROJECT_7-REACT-GALLERY-APP/static/js/2.fd6f6c4b.chunk.js.LICENSE.txt",
+    "static/media/404_Error.f3652e6b.jpg": "/PROJECT_7-REACT-GALLERY-APP/static/media/404_Error.f3652e6b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.50edd7ba.js",
+    "static/js/2.fd6f6c4b.chunk.js",
+    "static/css/main.e53c733d.chunk.css",
+    "static/js/main.fc03b13c.chunk.js"
+  ]
+}
